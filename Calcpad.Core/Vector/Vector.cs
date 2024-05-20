@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Calcpad.Core
 {
-    internal class Vector : IEnumerable<Vector>, IValue
+    /*internal class Vector : IEnumerable<Vector>, IValue
     { 
         private Value[] _items;
         public IEnumerator<Vector> GetEnumerator() =>
@@ -218,5 +218,5 @@ namespace Calcpad.Core
 
             return b;
         }
-    }
+    }*/
 }

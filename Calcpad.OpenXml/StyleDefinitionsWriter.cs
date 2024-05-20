@@ -1,5 +1,7 @@
-﻿using DocumentFormat.OpenXml.Packaging;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System;
 
 namespace Calcpad.OpenXml
 {
@@ -45,23 +47,28 @@ namespace Calcpad.OpenXml
         {
             var styles = styleDefinitionsPart.Styles;
             string[] fontSizes = ["48", "40", "36", "32", "28", "26"];
-            for (int i = 0; i < 6; ++i)
-            {
-                var id = 'h' + (i + 1).ToString();
+            
+            
+                        for (int i = 0; i < 6; ++i)
+                        {
+                            var id = 'h' + (i + 1).ToString();
+                //Change here your Headline Name
+                            var headline = "Überschrift " + (i + 1).ToString();
                 styles.AppendChild(new Style()
-                {
-                    Type = StyleValues.Paragraph,
-                    StyleId = id,
-                    StyleName = new StyleName() { Val = id },
-                    BasedOn = new BasedOn() { Val = "Normal" },
-                    NextParagraphStyle = new NextParagraphStyle() { Val = "Normal" },
-                    StyleRunProperties = new StyleRunProperties()
-                    {
-                        FontSize = new FontSize() { Val = fontSizes[i] },
-                        Bold = new Bold()
-                    }
-                });
-            }
+                            {
+                                
+                                Type = StyleValues.Paragraph,
+                                StyleId = id,
+                                StyleName = new StyleName() { Val = headline },
+                                BasedOn = new BasedOn() { Val = "Normal" },
+                                NextParagraphStyle = new NextParagraphStyle() { Val = "Normal" },
+                                StyleRunProperties = new StyleRunProperties()
+                                {
+                                    FontSize = new FontSize() { Val = fontSizes[i] },
+                                    Bold = new Bold()
+                                }
+                            });
+                        }
         }
 
         private static void AddTableStyles(StyleDefinitionsPart styleDefinitionsPart)
